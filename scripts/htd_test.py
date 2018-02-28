@@ -62,6 +62,7 @@ if __name__ == '__main__':
         logger.error("wrote %d of %d bytes", ret, len(s_bytes))
     if 'response' in commands[args.cmd]:
         ret = s.recv(commands[args.cmd]['response'])
+        out = []
         for x in ret:
-            sys.stdout.write(hex(x) + ', ')
-        sys.stdout.write("\n")
+            out.append("0x%02x" % x)
+        print("%s" % ','.join(out))
